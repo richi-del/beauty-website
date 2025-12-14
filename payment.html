@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment & Shipping</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<section class="payment">
+    <h2>Payment & Shipping Details</h2>
+
+    <form id="paymentForm" onsubmit="return placeOrder()">
+        <!-- Full Name -->
+        <input type="text" id="fullName" placeholder="Full Name" required>
+
+        <!-- Phone -->
+        <input type="text" id="phone" placeholder="Phone Number" required>
+
+        <!-- Address Dropdowns -->
+        <select id="division" onchange="updateDistricts()" required>
+            <option value="">Select Division</option>
+        </select>
+
+        <select id="district" onchange="updateSubDistricts()" required>
+            <option value="">Select District</option>
+        </select>
+
+        <select id="subDistrict" required>
+            <option value="">Select Sub-District/Thana</option>
+        </select>
+
+        <!-- Payment Method -->
+        <h3>Select Payment Method</h3>
+        <label><input type="radio" name="payment" required> bKash</label>
+        <label><input type="radio" name="payment"> Nagad</label>
+        <label><input type="radio" name="payment"> Rocket</label>
+        <label><input type="radio" name="payment"> Cash on Delivery</label>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <p id="orderMsg"></p>
+</section>
+
+<!-- JS for cascade dropdowns + order -->
+<script src="web.js"></script>
+<script>
+    // Bangladesh Divisions, Districts, Sub-Districts (sample demo)
+    const bangladeshData = {
+        "Dhaka": {
+            "Dhaka": ["Dhanmondi", "Gulshan", "Mirpur","Mirpur-1","Mirpur-10","Kajipara","Uttra"],
+            "Gazipur": ["Tongi", "Kaliakoir", "Sreepur"]
+        },
+        "Chittagong": {
+            "Chattogram": ["Pahartali", "Kotwali", "Chandgaon"],
+            "Cox's Bazar": ["Ukhia", "Teknaf", "Ramu"]
+        },
+        "Khulna": {
+            "Khulna": ["Sonadanga", "Khalishpur", "Daulatpur"],
+            "Jessore": ["Bagherpara", "Sharsha", "Keshabpur"]
+        },
+        "Rajshahi": {
+            "Rajshahi": ["Boalia", "Motihar", "Shah Makhdum"],
+            "Natore": ["Lalpur", "Baraigram", "Bagatipara"]
+        },
+        "Barishal": {
+            "Barishal": ["Barishal Sadar", "Bakerganj", "Muladi","Bhola"]
+        },
+        "Sylhet": {
+            "Sylhet": ["Sylhet Sadar", "Beanibazar", "Golapganj"]
+        },
+        "Rangpur": {
+            "Rangpur": ["Rangpur Sadar", "Badarganj", "Mithapukur"]
+        },
+        "Mymensingh": {
+            "Mymensingh": ["Mymensingh Sadar", "Trishal", "Gafargaon"]
+        }
+    };
+
+    // Populate Division dropdown
+    window.onload = function() {
+        const divisionSelect = document.getElementById("division");
+        for(let div in bangladeshData){
+            let option = document.createElement("option");
+            option.value = div;
+            option.text = div;
+            divisionSelect.add(option);
+        }
+    }
+
+    // Update Districts
+    function updateDistricts(){
+        const division = document.getElementById("division").value;
+        const districtSelect = document.getElementById("district");
+        districtSelect.innerHTML = '<option value="">Select District</option>';
+        document.getElementById("subDistrict").innerHTML = '<option value="">Select Sub-District/Thana</option>';
+
+        if(division){
+            let districts = Object.keys(bangladeshData[division]);
+            districts.forEach(d => {
+                let option = document.createElement("option");
+                option.value = d;
+                option.text = d;
+                districtSelect.add(option);
+            });
+        }
+    }
+
+    // Update Sub-Districts
+    function updateSubDistricts(){
+        const division = document.getElementById("division").value;
+        const district = document.getElementById("district").value;
+        const subSelect = document.getElementById("subDistrict");
+        subSelect.innerHTML = '<option value="">Select Sub-District/Thana</option>';
+
+        if(division && district){
+            let subs = bangladeshData[division][district];
+            subs.forEach(s => {
+                let option = document.createElement("option");
+                option.value = s;
+                option.text = s;
+                subSelect.add(option);
+            });
+        }
+    }
+
+    // Place Order
+    function placeOrder() {
+        document.getElementById("orderMsg").style.color = "green";
+        document.getElementById("orderMsg").innerText =
+            "Order placed successfully! Thank you 💖";
+
+        return false; // prevent page reload
+    }
+</script>
+
+</body>
+</html>
