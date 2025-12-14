@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajghoj Beauty Products</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Sajghoj</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+    <h1>Discover Your Beauty</h1>
+    <p>Premium beauty products at your fingertips</p>
+    <a href="#products" class="btn">Shop Now</a>
+</section>
+
+   
+   <!-- Login + Featured Products Section -->
+<section id="login-featured">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return loginUser()">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="loginMessage" style="color:red; margin-top:10px;"></p>
+    </div>
+
+    <div class="featured-container">
+        <h2>Featured Products</h2>
+        <div class="slider">
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slides">
+                <div class="slide"><img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\facecreem.jpg" alt="Face Cream"></div>
+                <div class="slide"><img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\WhatsApp Image 2025-12-13 at 23.29.24_191c61bf.jpg" alt="Lipstick"></div>
+                <div class="slide"><img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\perfume.jpg" alt="Perfume"></div>
+            </div>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+    
+
+    <!-- Products Section -->
+    <section id="products">
+        <h2>Our Products</h2>
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+        <select id="categoryFilter" onchange="filterProducts()">
+            <option value="all">All Categories</option>
+            <option value="face">Face</option>
+            <option value="lip">Lip</option>
+            <option value="perfume">Perfume</option>
+             <option value="mom-baby">Mom & Baby</option>
+        </select>
+
+
+        <div class="product-grid" id="productGrid">
+            <div class="product-card" data-category="face">
+                <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\facecreem.jpg" alt="Face Cream">
+                <h3>Face Cream</h3>
+                <p>৳500</p>
+                <button onclick="addToCart('Face Cream')">Add to Cart</button>
+            </div>
+            <div class="product-card" data-category="lip">
+                <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\WhatsApp Image 2025-12-13 at 23.29.24_191c61bf.jpg" alt="Lipstick">
+                <h3>Lipstick</h3>
+                <p>৳300</p>
+                <button onclick="addToCart('Lipstick')">Add to Cart</button>
+            </div>
+            <div class="product-card" data-category="perfume">
+                <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\perfume.jpg" alt="Perfume">
+                <h3>Perfume</h3>
+                <p>৳1200</p>
+                <button onclick="addToCart('Perfume')">Add to Cart</button>
+            </div>
+            <div class="product-card" data-category="face">
+                <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\face mask.jpg" alt="Face Mask">
+                <h3>Face Mask</h3>
+                <p>৳400</p>
+                <button onclick="addToCart('Face Mask')">Add to Cart</button>
+            </div>
+            <div class="product-card" data-category="lip">
+                <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\lipgloss.jpg" alt="Lip Gloss">
+                <h3>Lip Gloss</h3>
+                <p>৳350</p>
+                <button onclick="addToCart('Lip Gloss')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <!-- Mom & Baby Section -->
+<section id="mom-baby">
+    <h2>Mom & Baby</h2>
+
+    <div class="mom-baby-grid">
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\baby care.jpg" alt="Baby Care">
+            <h3>Baby Care</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Baby Care')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\diapers.jpg" alt="Diapers">
+            <h3>Diapers</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Diapers')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\baby food.jpg" alt="Baby Food">
+            <h3>Baby Food</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Baby Food')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\mom care.jpg" alt="Mom Care">
+            <h3>Mom Care</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Mom Care')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\pregnancy care.jpg" alt="Pregnancy Care">
+            <h3>Pregnancy Care</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Pregnancy Care')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\baby toys.jpg" alt="Baby Toys">
+            <h3>Baby Toys</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Baby Toys')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\baby skin care.jpg" alt="Baby Skin Care">
+            <h3>Baby Skin Care</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Baby Skin Care')">Add to Cart</button>
+
+        </div>
+
+        <div class="mb-card">
+            <img src="C:\Users\afiaf\OneDrive\Desktop\Web_lab_report\feeding items.jpg" alt="Feeding Items">
+            <h3>Feeding Items</h3>
+             <p>৳400</p>
+            <button onclick="addToCart('Feeding Items')">Add to Cart</button>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Sajghoj brings you high-quality beauty products for everyday elegance.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: support@sajghoj.com</p>
+        <p>Phone: +880 1234 567890</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Sajghoj. All Rights Reserved.</p>
+    </footer>
+
+    <script src="web.js"></script>
+</body>
+</html>
